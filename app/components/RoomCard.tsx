@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Room } from "../data/roomsData";
+import type { Room } from "@/data/roomsData";
 
 type RoomCardProps = {
   room: Room;
