@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { PricingPlan } from "@/data/pricingData";
 
-// Type definition: room গ
 type PriceCardProps = {
   room: PricingPlan;
 };
@@ -10,8 +9,8 @@ export default function PriceCard({ room }: PriceCardProps) {
   return (
     <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-zinc-800/80 bg-zinc-950/80 p-8 shadow-2xl backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-red-600/50">
       
-      
-      {room.badge && (
+      {/* Badge Section (Optional chaining '?' added to prevent undefined crash) */}
+      {room?.badge && (
         <div className="absolute right-6 top-6">
           <span className="rounded-full bg-gradient-to-r from-red-600 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
             {room.badge}
@@ -20,22 +19,20 @@ export default function PriceCard({ room }: PriceCardProps) {
       )}
 
       <div>
-        {/* Subtitle / Category */}
+        {/* Header */}
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
           The Comfort Inn
         </p>
 
-        {/* Room Title */}
         <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">
-          {room.title}
+          {room?.title}
         </h2>
 
-        {/* Description */}
         <p className="mt-3 min-h-[60px] text-sm leading-relaxed text-zinc-400">
-          {room.description}
+          {room?.description}
         </p>
 
-        {/* Price Block */}
+        {/* Pricing Block */}
         <div className="mt-6 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-5 backdrop-blur-md">
           <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
             Starting From
@@ -44,7 +41,7 @@ export default function PriceCard({ room }: PriceCardProps) {
           <div className="mt-1 flex items-baseline gap-1.5">
             <span className="text-2xl font-bold text-amber-400">₹</span>
             <span className="text-4xl font-black tracking-tight text-white sm:text-5xl">
-              {room.price.toLocaleString("en-IN")}
+              {room?.price ? room.price.toLocaleString("en-IN") : 0}
             </span>
             <span className="ml-1 text-xs font-medium text-zinc-500">/ night</span>
           </div>
@@ -57,7 +54,7 @@ export default function PriceCard({ room }: PriceCardProps) {
           </h3>
 
           <ul className="mt-4 space-y-3">
-            {room.features.map((feature) => (
+            {room?.features?.map((feature) => (
               <li key={feature} className="flex items-center gap-3 text-sm text-zinc-300">
                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-red-500/30 bg-red-600/20 text-xs text-red-500">
                   ✓
