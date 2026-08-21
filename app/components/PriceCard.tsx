@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { PricingPlan } from "@/data/pricingData";
 
 type PriceCardProps = {
-  plan: PricingPlan;
+  room: PricingPlan;
 };
 
 export default function PriceCard({ plan }: PriceCardProps) {
