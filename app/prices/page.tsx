@@ -29,6 +29,7 @@ export default function PricesPage() {
 
       {/* Pricing Cards */}
       <section className="px-6 pb-24">
+
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2">
 
           {pricingPlans.map((plan) => (
@@ -39,6 +40,7 @@ export default function PricesPage() {
           ))}
 
         </div>
+
       </section>
 
       {/* Permanent Benefits */}
@@ -46,6 +48,7 @@ export default function PricesPage() {
 
         <div className="mx-auto max-w-7xl">
 
+          {/* Heading */}
           <div className="mb-12 text-center">
 
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-red-500">
@@ -60,6 +63,7 @@ export default function PricesPage() {
 
           </div>
 
+          {/* Benefits */}
           <div className="grid gap-6 md:grid-cols-3">
 
             {benefits.map((benefit) => (
@@ -68,14 +72,17 @@ export default function PricesPage() {
                 className="rounded-xl border border-zinc-800 bg-black p-7 text-center transition duration-300 hover:-translate-y-1 hover:border-red-600"
               >
 
+                {/* Icon */}
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-xl font-bold text-white">
                   ✓
                 </div>
 
+                {/* Title */}
                 <h3 className="mt-5 text-lg font-bold text-white">
                   {benefit.title}
                 </h3>
 
+                {/* Description */}
                 <p className="mt-3 text-sm leading-7 text-gray-400">
                   {benefit.description}
                 </p>

@@ -3,6 +3,7 @@ export type PricingPlan = {
   title: string;
   description: string;
   price: number;
+  badge?: string;
   features: string[];
 };
 
@@ -11,8 +12,9 @@ export const pricingPlans: PricingPlan[] = [
     id: 1,
     title: "Deluxe Double Room",
     description:
-      "A comfortable and beautifully designed room perfect for a relaxing stay.",
+      "A comfortable and beautifully designed room perfect for a relaxing and memorable stay.",
     price: 700,
+    badge: "Popular",
     features: [
       "Free WiFi",
       "Room Service",
@@ -52,6 +54,7 @@ export const pricingPlans: PricingPlan[] = [
     description:
       "A spacious family-friendly suite offering comfort, convenience and plenty of space.",
     price: 1500,
+    badge: "Best For Family",
     features: [
       "Free WiFi",
       "Room Service",
