@@ -1,73 +1,88 @@
 import Link from "next/link";
-import type { Room } from "@/data/roomsData";
+import type { PricingPlan } from "@/data/pricingData";
 
-type RoomCardProps = {
-  room: Room;
+type PriceCardProps = {
+  plan: PricingPlan;
 };
 
-export default function RoomCard({ room }: RoomCardProps) {
+export default function PriceCard({ plan }: PriceCardProps) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-red-600">
-
-      {/* Image */}
-      <div className="relative h-72 overflow-hidden">
-
-        <img
-          src={room.image}
-          alt={room.title}
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-        />
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20" />
-
-        {/* Availability Badge */}
-        <div className="absolute left-5 top-5 rounded-md bg-[#d4af37] px-4 py-2 text-sm font-bold text-black shadow-lg">
-          {room.availability} Available
+    <article
+      className={`relative group flex h-full flex-col justify-between overflow-hidden rounded-3xl border transition-all duration-500 hover:-translate-y-2 p-8 shadow-2xl ${
+        plan.popular
+          ? "border-red-600/60 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black shadow-red-900/20"
+          : "border-zinc-800/80 bg-zinc-950/80 backdrop-blur-sm hover:border-red-600/50"
+      }`}
+    >
+      {/* Popular / Best Value Badge */}
+      {plan.badge && (
+        <div className="absolute right-6 top-6">
+          <span className="rounded-full bg-gradient-to-r from-red-600 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+            {plan.badge}
+          </span>
         </div>
+      )}
 
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-
-        {/* Title */}
-        <h2 className="text-2xl font-bold text-white">
-          {room.title}
-        </h2>
-
-        {/* Short Description */}
-        <p className="mt-3 line-clamp-2 text-sm leading-7 text-gray-400">
-          {room.description}
+      <div>
+        {/* Header */}
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
+          The Comfort Inn
         </p>
 
-        {/* Quick Features */}
-        <div className="mt-6 flex flex-wrap gap-3">
+        <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">
+          {plan.title}
+        </h2>
 
-          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
-            📶 WiFi
-          </span>
+        <p className="mt-3 min-h-[60px] text-sm leading-relaxed text-zinc-400">
+          {plan.description}
+        </p>
 
-          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
-            🚗 Parking
-          </span>
+        {/* Pricing Block */}
+        <div className="mt-6 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-5 backdrop-blur-md">
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+            Starting From
+          </p>
 
-          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
-            🛁 Attached Bathroom
-          </span>
-
+          <div className="mt-1 flex items-baseline gap-1.5">
+            <span className="text-2xl font-bold text-amber-400">₹</span>
+            <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+              {plan.price.toLocaleString("en-IN")}
+            </span>
+            <span className="text-xs font-medium text-zinc-500 ml-1">/ night</span>
+          </div>
         </div>
 
-        {/* Button */}
+        {/* Features List */}
         <div className="mt-7">
-          <Link
-            href={`/rooms/${room.id}`}
-            className="block w-full rounded-md bg-[#d4af37] px-6 py-3 text-center font-semibold text-black transition duration-300 hover:bg-red-600 hover:text-white"
-          >
-            View Details
-          </Link>
-        </div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            Included Amenities
+          </h3>
 
+          <ul className="mt-4 space-y-3">
+            {plan.features.map((feature) => (
+              <li key={feature} className="flex items-center gap-3 text-sm text-zinc-300">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600/20 text-red-500 border border-red-500/30 text-xs">
+                  ✓
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Action Button */}
+      <div className="mt-8 pt-4">
+        <Link
+          href="/contact"
+          className={`block w-full rounded-xl py-4 text-center text-sm font-bold tracking-wide transition-all duration-300 shadow-md ${
+            plan.popular
+              ? "bg-gradient-to-r from-red-600 to-amber-500 text-white hover:brightness-110 hover:shadow-red-600/25"
+              : "bg-zinc-900 border border-zinc-700 text-white hover:bg-red-600 hover:border-red-600 hover:text-white"
+          }`}
+        >
+          Select This Plan
+        </Link>
       </div>
     </article>
   );
