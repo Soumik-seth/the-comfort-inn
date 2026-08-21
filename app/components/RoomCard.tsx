@@ -1,87 +1,66 @@
 import Link from "next/link";
-import type { PricingPlan } from "@/data/pricingData";
+import type { Room } from "@/data/roomsData";
 
-type PriceCardProps = {
-  plan: PricingPlan;
+type RoomCardProps = {
+  room: Room;
 };
 
-export default function PriceCard({ plan }: PriceCardProps) {
+export default function RoomCard({ room }: RoomCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 p-8 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-red-600">
+    <article className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-red-600">
 
-      {/* Plan Title */}
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500">
-          The Comfort Inn
-        </p>
+      {/* Image */}
+      <div className="relative h-72 overflow-hidden">
 
-        <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">
-          {plan.title}
-        </h2>
+        <img
+          src={room.image}
+          alt={room.title}
+          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
 
-        <p className="mt-4 min-h-[72px] text-sm leading-7 text-gray-400">
-          {plan.description}
-        </p>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20" />
 
-      {/* Price */}
-      <div className="mt-7 border-y border-zinc-800 py-6">
-
-        <p className="text-sm font-medium text-gray-500">
-          Starting From
-        </p>
-
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-[#d4af37]">
-            ₹
-          </span>
-
-          <span className="text-5xl font-bold text-white">
-            {plan.price}
-          </span>
+        <div className="absolute left-5 top-5 rounded-md bg-[#d4af37] px-4 py-2 text-sm font-bold text-black shadow-lg">
+          {room.availability} Available
         </div>
 
-        <p className="mt-2 text-sm text-gray-500">
-          Per night
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+
+        <h2 className="text-2xl font-bold text-white">
+          {room.title}
+        </h2>
+
+        <p className="mt-3 line-clamp-2 text-sm leading-7 text-gray-400">
+          {room.description}
         </p>
 
-      </div>
+        <div className="mt-6 flex flex-wrap gap-3">
 
-      {/* Features */}
-      <div className="mt-7 flex-1">
+          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
+            📶 WiFi
+          </span>
 
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-[#d4af37]">
-          Included
-        </h3>
+          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
+            🚗 Parking
+          </span>
 
-        <ul className="mt-5 space-y-4">
+          <span className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-gray-300">
+            🛁 Attached Bathroom
+          </span>
 
-          {plan.features.map((feature) => (
-            <li
-              key={feature}
-              className="flex items-center gap-3 text-gray-300"
-            >
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-white">
-                ✓
-              </span>
+        </div>
 
-              {feature}
-            </li>
-          ))}
-
-        </ul>
-
-      </div>
-
-      {/* Select Plan */}
-      <div className="mt-8">
-
-        <Link
-          href="/contact"
-          className="block w-full rounded-md bg-red-600 px-6 py-3.5 text-center font-semibold text-white transition duration-300 hover:bg-[#d4af37] hover:text-black"
-        >
-          Select This Plan
-        </Link>
+        <div className="mt-7">
+          <Link
+            href={`/rooms/${room.id}`}
+            className="block w-full rounded-md bg-[#d4af37] px-6 py-3 text-center font-semibold text-black transition duration-300 hover:bg-red-600 hover:text-white"
+          >
+            View Details
+          </Link>
+        </div>
 
       </div>
 
