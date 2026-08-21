@@ -1,88 +1,82 @@
 import Link from "next/link";
 import type { PricingPlan } from "@/data/pricingData";
 
+// Type definition: room গ
 type PriceCardProps = {
   room: PricingPlan;
 };
 
-export default function PriceCard({ plan }: PriceCardProps) {
+export default function PriceCard({ room }: PriceCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 p-8 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-red-600">
+    <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-zinc-800/80 bg-zinc-950/80 p-8 shadow-2xl backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-red-600/50">
+      
+      
+      {room.badge && (
+        <div className="absolute right-6 top-6">
+          <span className="rounded-full bg-gradient-to-r from-red-600 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+            {room.badge}
+          </span>
+        </div>
+      )}
 
-      {/* Plan Title */}
       <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500">
+        {/* Subtitle / Category */}
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
           The Comfort Inn
         </p>
 
-        <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">
-          {plan.title}
+        {/* Room Title */}
+        <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">
+          {room.title}
         </h2>
 
-        <p className="mt-4 min-h-[72px] text-sm leading-7 text-gray-400">
-          {plan.description}
-        </p>
-      </div>
-
-      {/* Price */}
-      <div className="mt-7 border-y border-zinc-800 py-6">
-
-        <p className="text-sm font-medium text-gray-500">
-          Starting From
+        {/* Description */}
+        <p className="mt-3 min-h-[60px] text-sm leading-relaxed text-zinc-400">
+          {room.description}
         </p>
 
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-[#d4af37]">
-            ₹
-          </span>
+        {/* Price Block */}
+        <div className="mt-6 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-5 backdrop-blur-md">
+          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+            Starting From
+          </p>
 
-          <span className="text-5xl font-bold text-white">
-            {plan.price}
-          </span>
+          <div className="mt-1 flex items-baseline gap-1.5">
+            <span className="text-2xl font-bold text-amber-400">₹</span>
+            <span className="text-4xl font-black tracking-tight text-white sm:text-5xl">
+              {room.price.toLocaleString("en-IN")}
+            </span>
+            <span className="ml-1 text-xs font-medium text-zinc-500">/ night</span>
+          </div>
         </div>
 
-        <p className="mt-2 text-sm text-gray-500">
-          Per night
-        </p>
+        {/* Features List */}
+        <div className="mt-7">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            Included Amenities
+          </h3>
 
+          <ul className="mt-4 space-y-3">
+            {room.features.map((feature) => (
+              <li key={feature} className="flex items-center gap-3 text-sm text-zinc-300">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-red-500/30 bg-red-600/20 text-xs text-red-500">
+                  ✓
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Features */}
-      <div className="mt-7 flex-1">
-
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-[#d4af37]">
-          Included
-        </h3>
-
-        <ul className="mt-5 space-y-4">
-
-          {plan.features.map((feature) => (
-            <li
-              key={feature}
-              className="flex items-center gap-3 text-gray-300"
-            >
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-white">
-                ✓
-              </span>
-
-              {feature}
-            </li>
-          ))}
-
-        </ul>
-
-      </div>
-
-      {/* Select Plan */}
-      <div className="mt-8">
-
+      {/* Button */}
+      <div className="mt-8 pt-4">
         <Link
           href="/contact"
-          className="block w-full rounded-md bg-red-600 px-6 py-3.5 text-center font-semibold text-white transition duration-300 hover:bg-[#d4af37] hover:text-black"
+          className="block w-full rounded-xl border border-zinc-700 bg-zinc-900 py-4 text-center text-sm font-bold tracking-wide text-white transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:shadow-lg"
         >
-          Select This Plan
+          Select This Room
         </Link>
-
       </div>
 
     </article>
