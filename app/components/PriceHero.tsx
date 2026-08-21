@@ -7,9 +7,9 @@ export default function PriceHero() {
           Simple & Transparent
         </p>
 
-        <h1 className="mt-4 text-5xl font-bold uppercase text-white md:text-6xl">
-          Room Pricing
-        </h1>
+      <h1 className="mt-6 text-4xl font-extrabold uppercase tracking-tight text-white sm:text-6xl md:text-7xl">
+  Room <span className="bg-gradient-to-r from-red-500 via-red-400 to-amber-400 bg-clip-text text-transparent">Pricing</span>
+</h1>
 
         <div className="mx-auto mt-5 h-1 w-16 bg-red-600" />
 

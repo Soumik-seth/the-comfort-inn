@@ -94,11 +94,11 @@ export default function PriceCard({ plan }: PriceCardProps) {
       <div className="mt-8 pt-4">
 
         <Link
-          href="/contact"
-          className="block w-full rounded-xl border border-zinc-700 bg-zinc-900 py-4 text-center text-sm font-bold tracking-wide text-white transition-all duration-300 hover:border-red-600 hover:bg-red-600 hover:shadow-lg"
-        >
-          Select This Plan
-        </Link>
+  href="/contact"
+  className="block w-full rounded-md bg-[#d4af37] px-6 py-3 text-center font-semibold text-black transition duration-300 hover:bg-red-600 hover:text-white"
+>
+  Select This Plan
+</Link>
 
       </div>
 
