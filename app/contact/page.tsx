@@ -2,7 +2,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-black px-6 pt-32 text-white">
       <h1 className="text-4xl font-bold text-red-500">
-        Contact Us
+        soumik
       </h1>
 
       <p className="mt-4 text-gray-400">

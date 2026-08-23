@@ -20,7 +20,6 @@ export default function PriceCard({ plan }: PriceCardProps) {
 
       <div>
 
-        {/* Header */}
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
           The Comfort Inn
         </p>
@@ -33,7 +32,7 @@ export default function PriceCard({ plan }: PriceCardProps) {
           {plan.description}
         </p>
 
-        {/* Pricing */}
+        {/* Price */}
         <div className="mt-6 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 p-5 backdrop-blur-md">
 
           <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
@@ -77,9 +76,7 @@ export default function PriceCard({ plan }: PriceCardProps) {
                   ✓
                 </span>
 
-                <span>
-                  {feature}
-                </span>
+                <span>{feature}</span>
 
               </li>
             ))}
@@ -94,11 +91,11 @@ export default function PriceCard({ plan }: PriceCardProps) {
       <div className="mt-8 pt-4">
 
         <Link
-  href="/contact"
-  className="block w-full rounded-md bg-[#d4af37] px-6 py-3 text-center font-semibold text-black transition duration-300 hover:bg-red-600 hover:text-white"
->
-  Select This Plan
-</Link>
+          href="/contact"
+          className="block w-full rounded-md bg-[#d4af37] px-6 py-3 text-center font-semibold text-black transition duration-300 hover:bg-red-600 hover:text-white"
+        >
+          Select This Plan
+        </Link>
 
       </div>
 
