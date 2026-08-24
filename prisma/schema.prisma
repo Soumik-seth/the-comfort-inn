@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Room {
+  id                 Int      @id @default(autoincrement())
+  title              String
+  description        String
+  image              String
+  availability       Int
+  bedType            String
+  maxOccupancy       String
+  roomSize           String
+  roomFeatures       String[]
+  additionalFeatures String[]
+  photos             String[]
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model PricingPlan {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  price       Int
+  badge       String?
+  features    String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
