@@ -78,7 +78,7 @@ export default function Services() {
 
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <p className="mb-2 text-sm uppercase tracking-widest text-red-500">
-                We're Here For You
+                We&apos;re Here For You
               </p>
 
               <h3 className="text-3xl font-bold text-white">

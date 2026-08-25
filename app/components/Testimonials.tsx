@@ -37,7 +37,7 @@ export default function Testimonials() {
           <div className="mx-auto mt-5 h-1 w-16 bg-red-600" />
 
           <p className="mx-auto mt-5 max-w-2xl text-gray-400">
-            Our guests' experiences mean everything to us.
+            Our guests&apos; experiences mean everything to us.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function Testimonials() {
 
               {/* Quote */}
               <p className="mt-6 min-h-[120px] text-base leading-7 text-gray-300">
-                "{testimonial.message}"
+                &quot;{testimonial.message}&quot;
               </p>
 
               {/* Divider */}
